@@ -31,27 +31,50 @@ namespace Stack
         /// returns number of elements in the stack
         public int size()
         {
-
+            return numElements;
         }
 
         /// return true if the stack is empty
         public bool empty()
         {
+            if (numElements == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// adds an element to the top of the stack
         public void push(int value)
         { //ensure to check if stack is full
+            if (numElements < capacity)
+            {
+                data[numElements] = value;
+                numElements++;
+            }
         }
 
         /// returns the element from the top of the stack and removes it
         public int pop()
         {
+            int value = -1;
+            if (!empty())
+            {
+                value = data[numElements - 1];
+                Array.Clear(data, numElements - 1, 1);
+                numElements--;
+                
+            }
+            return value;
         }
 
         /// returns the element from the top of the stack
         public int peek()
         {
+            return data[numElements - 1];
         }
 
     }
